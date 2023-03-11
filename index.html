@@ -8,10 +8,10 @@
         <script>
             
              function getComputerChoice() {
-                var game = ["Rock", "Paper", "Scissors"];
-                const random = Math.floor(Math.random() * game.length)
+                var options = ["Rock", "Paper", "Scissors"];
+                const random = Math.floor(Math.random() * options.length)
             
-                return game[random];
+                return options[random];
              }
              
         
@@ -33,11 +33,40 @@
                 } else {
                     return "Computer won! " + computerSelection + " beats " + playerSelectionLower;
                 }
+             }
 
+             function game() {
+                let playerScore = 0;
+                let computerScore = 0;
+            
+                for (let round = 0; round < 5; round++) {
+                    const playerSelection = prompt("Rock, Paper, Scissors? ");
+                    const result = playRound(playerSelection)
 
+                    console.log("Round " + (round + 1) + ": " + result);
+
+                    if (result.startsWith("Player")) {
+                        playerScore++
+                    } else if (result.startsWith("Computer")) {
+                        computerScore++
+                    }
+                }
+                
+                
+
+                console.log("Final score: Player " + playerScore + ", computer " + computerScore);
+
+                if (playerScore > computerScore) {
+                    console.log("player wins the game");
+                } else if (playerScore < computerScore) {
+                    console.log("Computer wins the game");
+                } else {
+                    console.log("It's a tie");
+                }                
              }
 
              console.log(playRound("Rock"))
+             game()
              
    
             
