@@ -6,35 +6,40 @@
     </head>
     <body>
         <script>
+            
              function getComputerChoice() {
                 var game = ["Rock", "Paper", "Scissors"];
                 const random = Math.floor(Math.random() * game.length)
-                const computerSelection = game[random];
-                const result = playerSelection.localeCompare(computerSelection, undifined, {
-                    sensitivity: "accent"
-                })
-                return computerSelection;
+            
+                return game[random];
              }
+             
+        
 
              function playRound(playerSelection){
-                const computerSelection = getComputerChoice();
-                if (playerSelection === computerSelection) {
-                    return "Its a tie!";
+                const computerSelection = getComputerChoice().toLowerCase();
+                const playerSelectionLower = playerSelection.toLowerCase();
+                const result = playerSelectionLower.localeCompare(computerSelection, undefined, {
+                    sensitivity: "accent"
+                });
+                if (result === 0) {
+                    return "It's a tie!";
                 } else if (
-                    (playerSelection === "Rock" && computerSelection === "Scissors") ||
-                    (playerSelection === "Paper" && computerSelection === "Rock") ||
-                    (playerSelection === "Scissors" && computerSelection === "Paper")
+                    (playerSelectionLower === "Rock" && computerSelection === "Scissors") ||
+                    (playerSelectionLower === "Paper" && computerSelection === "Rock") ||
+                    (playerSelectionLower === "Scissors" && computerSelection === "Paper")
                 ) {
-                    return "Player won! " + playerSelection + " beats " + computerSelection
+                    return "Player won! " + playerSelectionLower + " beats " + computerSelection;
                 } else {
-                    return "Computer won! " + computerSelection + " beats " + playerSelection
+                    return "Computer won! " + computerSelection + " beats " + playerSelectionLower;
                 }
 
 
              }
+
+             console.log(playRound("Rock"))
              
-            console.log(playRound("rock"))
-          
+   
             
 
 
