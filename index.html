@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Page title</title>
+    </head>
+    <body>
+        <script>
+             function getComputerChoice() {
+                var game = ["Rock", "Paper", "Scissors"];
+                const random = Math.floor(Math.random() * game.length)
+                const computerSelection = game[random];
+                const result = playerSelection.localeCompare(computerSelection, undifined, {
+                    sensitivity: "accent"
+                })
+                return computerSelection;
+             }
+
+             function playRound(playerSelection){
+                const computerSelection = getComputerChoice();
+                if (playerSelection === computerSelection) {
+                    return "Its a tie!";
+                } else if (
+                    (playerSelection === "Rock" && computerSelection === "Scissors") ||
+                    (playerSelection === "Paper" && computerSelection === "Rock") ||
+                    (playerSelection === "Scissors" && computerSelection === "Paper")
+                ) {
+                    return "Player won! " + playerSelection + " beats " + computerSelection
+                } else {
+                    return "Computer won! " + computerSelection + " beats " + playerSelection
+                }
+
+
+             }
+             
+            console.log(playRound("rock"))
+          
+            
+
+
+        </script>
+    </body>
+
+</html>
