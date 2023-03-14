@@ -2,25 +2,68 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        
         <title>Page title</title>
+        <script src="js-file.js"></script>
     </head>
     <body>
+        <h1> Choose Rock, Paper or Scissors!</h1>
+        <button id="rock-Button" type = "button">Rock</button>
+        <button id="paper-Button" type = "Button">Paper</button>
+        <button id="scissors-Button" type ="Button">Scissors</button>
+        <div id="results"></div>
+        
+     
         <script>
+            /* Buttons which call playing round*/
+
+
+            function writeResult(message){
+            const resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML += message + "<br>";
+            }
+
+            const rockButton =document.getElementById("rock-Button");
+                rockButton.addEventListener("click", function(){
+                    const result = playRound("rock");
+                    writeResult(result);
+                })
+            
+            const paperButton = document.getElementById("paper-Button");
+                paperButton.addEventListener("click", function() {
+                    result = playRound("paper");
+                    writeResult(result);
+                })
+            
+            const scissorsButton = document.getElementById("scissors-Button");
+                scissorsButton.addEventListener("click", function(){
+                    const result = playRound("scissors")
+                    writeResult(result);
+                })
+           
+
+
+        
+
             
              function getComputerChoice() {
-                var options = ["Rock", "Paper", "Scissors"];
+                var options = ["rock", "paper", "scissors"];
                 const random = Math.floor(Math.random() * options.length)
             
                 return options[random];
              }
              
+
         
+             /* Game rules for each round */
 
              function playRound(playerSelection){
                 const computerSelection = getComputerChoice().toLowerCase();
                 const playerSelectionLower = playerSelection.toLowerCase();
                 const result = playerSelectionLower.localeCompare(computerSelection, undefined, {
                     sensitivity: "accent"
+               
+
                 });
                 if (result === 0) {
                     return "It's a tie!";
@@ -34,16 +77,15 @@
                     return "Computer won! " + computerSelection + " beats " + playerSelectionLower;
                 }
              }
-
+            /* */
              function game() {
                 let playerScore = 0;
                 let computerScore = 0;
             
-                for (let round = 0; round < 5; round++) {
-                    const playerSelection = prompt("Rock, Paper, Scissors? ");
-                    const result = playRound(playerSelection)
+                while (playerScore < 5) {
+                     const result = playRound(playerSelection);
 
-                    console.log("Round " + (round + 1) + ": " + result);
+                    console.log(result);
 
                     if (result.startsWith("Player")) {
                         playerScore++
@@ -51,6 +93,8 @@
                         computerScore++
                     }
                 }
+
+             
                 
                 
 
@@ -62,17 +106,17 @@
                     console.log("Computer wins the game");
                 } else {
                     console.log("It's a tie");
-                }                
+                }   
+                
              }
-
-             console.log(playRound("Rock"))
-             game()
-             
-   
             
 
-
+            console.log(getComputerChoice)
+            game()
         </script>
+        
+        
+        
     </body>
 
 </html>
