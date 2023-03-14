@@ -8,112 +8,11 @@
     </head>
     <body>
         <h1> Choose Rock, Paper or Scissors!</h1>
-        <button id="rock-Button" type = "button">Rock</button>
-        <button id="paper-Button" type = "Button">Paper</button>
-        <button id="scissors-Button" type ="Button">Scissors</button>
+        <button id="rockButton" type = "button">Rock</button>
+        <button id="paperButton" type = "Button">Paper</button>
+        <button id="scissorsButton" type ="Button">Scissors</button>
         <div id="results"></div>
-        
-     
-        <script>
-            /* Buttons which call playing round*/
 
-
-            function writeResult(message){
-            const resultsDiv = document.getElementById("results");
-            resultsDiv.innerHTML += message + "<br>";
-            }
-
-            const rockButton =document.getElementById("rock-Button");
-                rockButton.addEventListener("click", function(){
-                    const result = playRound("rock");
-                    writeResult(result);
-                })
-            
-            const paperButton = document.getElementById("paper-Button");
-                paperButton.addEventListener("click", function() {
-                    result = playRound("paper");
-                    writeResult(result);
-                })
-            
-            const scissorsButton = document.getElementById("scissors-Button");
-                scissorsButton.addEventListener("click", function(){
-                    const result = playRound("scissors")
-                    writeResult(result);
-                })
-           
-
-
-        
-
-            
-             function getComputerChoice() {
-                var options = ["rock", "paper", "scissors"];
-                const random = Math.floor(Math.random() * options.length)
-            
-                return options[random];
-             }
-             
-
-        
-             /* Game rules for each round */
-
-             function playRound(playerSelection){
-                const computerSelection = getComputerChoice().toLowerCase();
-                const playerSelectionLower = playerSelection.toLowerCase();
-                const result = playerSelectionLower.localeCompare(computerSelection, undefined, {
-                    sensitivity: "accent"
-               
-
-                });
-                if (result === 0) {
-                    return "It's a tie!";
-                } else if (
-                    (playerSelectionLower === "rock" && computerSelection === "scissors") ||
-                    (playerSelectionLower === "paper" && computerSelection === "rock") ||
-                    (playerSelectionLower === "scissors" && computerSelection === "paper")
-                ) {
-                    return "Player won! " + playerSelectionLower + " beats " + computerSelection;
-                } else {
-                    return "Computer won! " + computerSelection + " beats " + playerSelectionLower;
-                }
-             }
-            /* */
-             function game() {
-                let playerScore = 0;
-                let computerScore = 0;
-            
-                while (playerScore < 5) {
-                     const result = playRound(playerSelection);
-
-                    console.log(result);
-
-                    if (result.startsWith("Player")) {
-                        playerScore++
-                    } else if (result.startsWith("Computer")) {
-                        computerScore++
-                    }
-                }
-
-             
-                
-                
-
-                console.log("Final score: Player " + playerScore + ", computer " + computerScore);
-
-                if (playerScore > computerScore) {
-                    console.log("player wins the game");
-                } else if (playerScore < computerScore) {
-                    console.log("Computer wins the game");
-                } else {
-                    console.log("It's a tie");
-                }   
-                
-             }
-            
-
-            console.log(getComputerChoice)
-            game()
-        </script>
         
         
         
